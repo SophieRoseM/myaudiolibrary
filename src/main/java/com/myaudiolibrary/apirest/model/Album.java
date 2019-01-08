@@ -1,5 +1,7 @@
 package com.myaudiolibrary.apirest.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,11 +10,14 @@ public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer albumId;
+    @Column (name="AlbumId")
+    private Long albumId;
+    @Column (name="Title")
     private String title;
 
     @ManyToOne
     @JoinColumn(name = "ArtistId")
+    @JsonBackReference
     private Artist artist;
 
     public Album() {}
@@ -23,11 +28,11 @@ public class Album {
     }
 
 
-    public Integer getAlbumId() {
+    public Long getAlbumId() {
         return albumId;
     }
 
-    public void setAlbumId(Integer albumId) {
+    public void setAlbumId(Long albumId) {
         this.albumId = albumId;
     }
 

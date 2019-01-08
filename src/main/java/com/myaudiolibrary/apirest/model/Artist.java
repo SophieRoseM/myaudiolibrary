@@ -1,6 +1,8 @@
 package com.myaudiolibrary.apirest.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,11 +12,13 @@ public class Artist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer artistId;
+    @Column(name="ArtistId")
+    private Long artistId;
+    @Column(name="Name")
     private String name;
 
     @OneToMany (mappedBy = "artist")
-    @JsonIgnoreProperties("artist")
+    @JsonManagedReference // eviter pb de recurcivité
     private List<Album> albums;
 
     public Artist() {}
@@ -24,11 +28,11 @@ public class Artist {
         this.albums = albums;
     }
 
-    public Integer getArtistId() {
+    public Long getArtistId() {
         return artistId;
     }
 
-    public void setArtistId(Integer artistId) {
+    public void setArtistId(Long artistId) {
         this.artistId = artistId;
     }
 
