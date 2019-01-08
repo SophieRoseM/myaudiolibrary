@@ -3,6 +3,7 @@ package com.myaudiolibrary.apirest.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name="album")
 public class Album {
 
     @Id
@@ -11,7 +12,7 @@ public class Album {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "artistId")
+    @JoinColumn(name = "ArtistId")
     private Artist artist;
 
     public Album() {}
