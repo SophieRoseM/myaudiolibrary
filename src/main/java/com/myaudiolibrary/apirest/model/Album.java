@@ -11,7 +11,7 @@ public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="AlbumId")
-    private Long albumId;
+    private Long id;
     @Column (name="Title")
     private String title;
 
@@ -28,12 +28,12 @@ public class Album {
     }
 
 
-    public Long getAlbumId() {
-        return albumId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAlbumId(Long albumId) {
-        this.albumId = albumId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
