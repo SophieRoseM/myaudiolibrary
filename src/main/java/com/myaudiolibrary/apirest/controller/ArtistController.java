@@ -27,13 +27,20 @@ public class ArtistController {
         return artistService.findById(id);
     }
     //question 2 recherche par nom
+   // @RequestMapping(params = "name")
+   // public List<Artist> findAllByName(@RequestParam("name")String name)throws EntityNotFoundException{
+   //     return artistService.findAllByName(name);
+   // }
+
     @RequestMapping(params = "name")
-    public List<Artist> findByName(@RequestParam("name")String name)throws EntityNotFoundException{
-        return artistService.findByName(name);
-    }
+        public List<Artist> artists(@RequestParam(value="name") String name)throws Exception {
+            return artistService.findByName(name);
+        }
+
+
 
     //question 3 affiche liste
-    @RequestMapping(params = "name")
+    @RequestMapping()
     public Page<Artist> ListName (@RequestParam(value = "page")Integer page,
                                               @RequestParam(value = "size")Integer size,
                                               @RequestParam(value = "sortDirection")String sortDirection,

@@ -27,13 +27,20 @@ public class ArtistService {
         return artist;
     }
 //question 2 recherche par nom
-    public List<Artist> findByName(String name) {
-        //Artist artist = artistRepository.findByName(name);
-        List<Artist> findByName = new ArrayList() ;
-       if( findByName.contains(name)) {
-           return findByName;
-       }return null;
-    }
+   // public List<Artist> findAllByName(String name) {
+    // Artist artist = artistRepository.findByName(name);
+     //   List<Artist> findAllByName = new ArrayList() ;
+    //   if( findAllByName.contains(name)) {
+    //       return findAllByName;
+   //    }return null;
+   // }
+
+
+    public List<Artist> findByName(String name) throws Exception{
+            return artistRepository.findByNameContaining(name);
+        }
+
+
 //question 3 affiche liste
     public Long countArtist (){
         return artistRepository.count();

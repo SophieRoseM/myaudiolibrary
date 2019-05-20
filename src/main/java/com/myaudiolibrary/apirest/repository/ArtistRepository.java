@@ -8,5 +8,6 @@ import java.util.List;
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
 
 
-      List<Artist> findByName(String name);
+      Artist findByName(String name);
+      List<Artist> findByNameContaining(String name);
 }
