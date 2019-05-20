@@ -10,12 +10,40 @@ import javax.persistence.EntityNotFoundException;
 
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
-
+public class GlobalExceptionHandler
+{
+    //Exercice 1 - 2
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleEntityNotFoundException(EntityNotFoundException entityNotFoundException) {
+    public String handleEntityNotFoundException(EntityNotFoundException entityNotFoundException)
+    {
         return entityNotFoundException.getMessage();
     }
+
+
+    //Exercice 3
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleEntityNotFoundException(IllegalArgumentException illegalArgumentException)
+    {
+        return illegalArgumentException.getMessage();
+    }
+
+    //Excercice 4
+    @ExceptionHandler(DoublonException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public String handleEntityNotFoundException(DoublonException artistName)
+    {
+        return artistName.getMessage();
+    }
+
+
+
 }
+
+
+
+

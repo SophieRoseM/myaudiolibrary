@@ -6,12 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="album")
-public class Album {
+public class Album
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="AlbumId")
     private Long id;
+
     @Column (name="Title")
     private String title;
 
@@ -22,7 +24,8 @@ public class Album {
 
     public Album() {}
 
-    public Album(String title, Artist artist) {
+    public Album(String title, Artist artist)
+    {
         this.title = title;
         this.artist = artist;
     }

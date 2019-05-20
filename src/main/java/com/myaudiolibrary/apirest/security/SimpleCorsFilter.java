@@ -15,7 +15,8 @@ import java.io.IOException;
  */
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class SimpleCorsFilter implements Filter {
+public class SimpleCorsFilter implements Filter
+{
 
     @Value("${spring.cors.allowOrigin}")
     private String allowOrigin;
@@ -24,7 +25,8 @@ public class SimpleCorsFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException
+    {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
         response.setHeader("Access-Control-Allow-Origin", allowOrigin);
@@ -32,7 +34,8 @@ public class SimpleCorsFilter implements Filter {
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "user-agent, host, accept, accept-language, accept-encoding, dnt, content-type, refererer, content-length, connection, x-requested-with, authorization, access-control-allow-origin, cache-control, pragma, withCredentials");
 
-        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod()))
+        {
             response.setStatus(HttpServletResponse.SC_OK);
         } else {
             chain.doFilter(req, res);

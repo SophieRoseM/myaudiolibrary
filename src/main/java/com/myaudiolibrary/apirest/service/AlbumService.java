@@ -7,15 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AlbumService {
+public class AlbumService
+{
 
     @Autowired
     private AlbumRepository albumRepository;
 
 
 //question 7 ajouter album
-    public Album addAlbum(Album album)throws DoublonException {
-        if (albumRepository.findByTitle(album.getTitle())!= null){
+    public Album addAlbum(Album album)throws DoublonException
+    {
+        if (albumRepository.findByTitle(album.getTitle())!= null)
+        {
             throw new DoublonException("le nom de l'artiste : "+album.getTitle()+" existe deja");
         }
         return albumRepository.save(album);

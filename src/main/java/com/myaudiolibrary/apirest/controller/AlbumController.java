@@ -10,21 +10,24 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/albums")
-public class AlbumController {
+public class AlbumController
+{
 
     @Autowired
     private AlbumService albumService;
 
     //question 7 creation d'album
     @RequestMapping(value = "",method = RequestMethod.POST,consumes="application/json",produces = "application/json")
-    public Album addAlbum(@RequestBody Album album) throws DoublonException {
+    public Album addAlbum(@RequestBody Album album) throws DoublonException
+    {
         return albumService.addAlbum(album);
     }
 
     //question 8 supprimer album
     @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void deleteAlbum(@PathVariable(value = "id")Long id){
+    public void deleteAlbum(@PathVariable(value = "id")Long id)
+    {
         albumService.deleteAlbum(id);
     }
 

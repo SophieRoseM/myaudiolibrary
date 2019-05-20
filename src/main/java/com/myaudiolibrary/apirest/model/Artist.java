@@ -2,16 +2,20 @@ package com.myaudiolibrary.apirest.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table (name="artist")
-public class Artist {
+public class Artist
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ArtistId")
     private Long id;
+
+    @NotNull
     @Column(name="Name")
     private String name;
 
@@ -21,7 +25,8 @@ public class Artist {
 
     public Artist() {}
 
-    public Artist(String name, List<Album> albums) {
+    public Artist(String name, List<Album> albums)
+    {
         this.name = name;
         this.albums = albums;
     }
